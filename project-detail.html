@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Project – Project Beres</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/logo-Cu-u0F5W.ico">
+  <link rel="icon" type="image/webp" href="./assets/logo-CL72AZUW.webp">
+  
+  <!-- CSS Kustom Terpisah -->
+  
+  <style>
+    /* Custom CSS khusus untuk Halaman Detail */
+    .detail-hero {
+      min-height: calc(100vh - 80px);
+      padding: 140px 5% 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+    
+    .detail-container {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(21, 29, 48, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 48px;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    @media (max-width: 992px) {
+      .detail-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+      }
+    }
+    
+    .detail-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    
+    .detail-visual-wrapper {
+      width: 200px;
+      height: 200px;
+      background: #000000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 32px rgba(16, 185, 129, 0.25);
+      margin-bottom: 24px;
+      position: relative;
+      animation: floatVisual 6s ease-in-out infinite;
+    }
+    
+    @keyframes floatVisual {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.02); }
+    }
+    
+    .detail-visual-icon {
+      font-size: 84px;
+    }
+    
+    .detail-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s, transform 0.2s;
+      margin-bottom: 32px;
+      align-self: flex-start;
+    }
+    
+    .detail-back-btn:hover {
+      color: var(--green);
+      transform: translateX(-4px);
+    }
+    
+    .detail-right {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .detail-tag {
+      align-self: flex-start;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    
+    .detail-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white-text);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    
+    .detail-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    
+    .detail-tech-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    
+    .detail-desc {
+      color: var(--text);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    
+    .detail-features-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .detail-features-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white-text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .detail-features-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    @media (max-width: 576px) {
+      .detail-features-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .detail-features-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    
+    .detail-features-item::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 900;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .detail-cta-btn {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--amber);
+      color: var(--white-text);
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 8px 24px rgba(37,99,235,0.3);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    
+    @media (max-width: 600px) {
+      .detail-hero {
+        padding: 100px 4% 40px;
+      }
+      .detail-container {
+        padding: 24px 16px;
+        gap: 20px;
+      }
+      .detail-visual-wrapper {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 16px;
+      }
+      .detail-visual-icon {
+        font-size: 56px;
+      }
+      .detail-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      .detail-desc {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      .detail-features-card {
+        padding: 16px;
+        margin-bottom: 20px;
+      }
+      .detail-features-title {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+      .detail-features-list {
+        gap: 8px;
+      }
+      .detail-back-btn {
+        margin-bottom: 20px;
+      }
+      .detail-cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    .detail-cta-btn:hover {
+      background: var(--amber-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.4);
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/main-BKwshRvH.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-Dry5MX9R.css">
+</head>
+<body>
+
+  <!-- load navbar secara modular -->
+  <!-- CURSOR -->
+<canvas id="cursor-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9997;"></canvas>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-text">Yuk, Coba!</div>
+
+  <!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-icon">
+      <img src="data:image/webp;base64,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" alt="Project Beres Logo">
+    </div>
+    <span class="logo-text">Project <span>Beres</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#layanan">Project</a></li>
+    <li><a href="#harga">Harga</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+    <li><a href="#tanya-jawab">Tanya Jawab</a></li>
+    <li><a href="#kontak" class="nav-cta desktop">Hubungi Sekarang</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+  <div class="detail-hero">
+    <!-- Grid Latar Belakang Cyber -->
+    <div class="hero-grid" style="opacity: 0.6;"></div>
+    
+    <div class="detail-container">
+      
+      <!-- Sisi Kiri: Visual & Back Button -->
+      <div class="detail-left reveal-left">
+        <a href="index.html" class="detail-back-btn">
+          <span>←</span> Kembali ke Beranda
+        </a>
+        
+        <div class="detail-visual-wrapper" id="projectVisualWrapper">
+          <div class="detail-visual-icon" id="projectIcon">🚀</div>
+        </div>
+      </div>
+      
+      <!-- Sisi Kanan: Konten Informasi Project -->
+      <div class="detail-right reveal-right">
+        <div class="detail-tag" id="projectTag">Category</div>
+        <h1 class="detail-title" id="projectTitle">Nama Project</h1>
+        
+        <!-- Tech Stack Chips -->
+        <div class="detail-tech-stack" id="projectTechStack">
+          <!-- Dinamis -->
+        </div>
+        
+        <p class="detail-desc" id="projectDesc">
+          Loading deskripsi lengkap project...
+        </p>
+        
+        <!-- Card Fitur Utama -->
+        <div class="detail-features-card">
+          <div class="detail-features-title">
+            <span>🛠️</span> Fitur & Kelebihan Utama:
+          </div>
+          <ul class="detail-features-list" id="projectFeaturesList">
+            <!-- Dinamis -->
+          </ul>
+        </div>
+        
+        <!-- CTA Diskusi WhatsApp -->
+        <a href="#" class="detail-cta-btn" id="projectCta">
+          Diskusikan Project Seperti Ini <span>↗</span>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- load footer secara modular -->
+  <!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#hero" class="nav-logo footer-logo">
+      <div class="logo-icon">
+        <img src="data:image/webp;base64,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" alt="Project Beres Logo">
+      </div>
+      <span class="logo-text">Project <span>Beres</span></span>
+    </a>
+    <div class="footer-links">
+      <a href="#layanan">Project</a>
+      <a href="#harga">Harga</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#tanya-jawab">FAQ</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Project Beres. Dibuat dengan ❤️ — Ada Project? Pasti Beres.</p>
+</footer>
+
+
+
+  <!-- Database & Router Project -->
+  <script>
+    // Database Data Project Lengkap
+    const PROJECTS_DATA = {
+      "landing-page-profile": {
+        title: "Landing Page Profile Perusahaan",
+        icon: "🏢",
+        tag: "Web Development",
+        desc: "Landing page modern yang dirancang khusus untuk meningkatkan kredibilitas bisnis Anda di dunia digital. Memiliki performa pemuatan super cepat (< 1 detik), SEO-optimized, dan layout elegan yang disesuaikan dengan identitas brand perusahaan Anda. Dilengkapi dengan galeri proyek, testimoni klien, formulir kontak terenkripsi, dan peta interaktif.",
+        tech: ["HTML5", "CSS3", "JavaScript", "GSAP Animations", "Vite"],
+        features: ["Desain Premium & Responsive", "Kecepatan Akses Tinggi (Speed Index 95+)", "Integrasi Form Kontak Email", "Google Maps & Social Link Integration"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Landing Page Profile Perusahaan."
+      },
+      "landing-page-umkm": {
+        title: "Landing Page UMKM",
+        icon: "🛍️",
+        tag: "Web Development",
+        desc: "Solusi jitu bagi para pemilik bisnis UMKM yang ingin menaikkan omzet penjualan secara online. Landing page ini dirancang dengan copywriting yang menjual (high-conversion copywriting) dan tombol Call-to-Action (CTA) WhatsApp yang langsung mengarah ke admin Anda. Sangat cocok untuk iklan Facebook Ads, Instagram Ads, atau Google Ads.",
+        tech: ["HTML5", "Tailwind CSS", "JavaScript", "WhatsApp API"],
+        features: ["High-Converting Sales Layout", "One-Click Order via WhatsApp", "Galeri Produk & Price List Elegan", "Optimasi untuk Iklan Berbayar (Ads Friendly)"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Landing Page UMKM."
+      },
+      "landing-page-portofolio": {
+        title: "Landing Page Portofolio",
+        icon: "💼",
+        tag: "Web Development",
+        desc: "Website portofolio interaktif untuk memamerkan resume, pencapaian, skill, dan hasil karya Anda secara memukau. Sangat cocok bagi mahasiswa tingkat akhir yang ingin melamar kerja, freelancer, maupun profesional yang ingin membangun personal branding yang kuat di mata HRD atau klien.",
+        tech: ["HTML5", "CSS3", "ScrollReveal", "Vanilla JS"],
+        features: ["Interactive Floating Animations", "Skema Warna Cyber Dark Mode", "Showcase Project Grid", "Downloadable Resume Button"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Landing Page Portofolio."
+      },
+      "wordpress-umkm": {
+        title: "WordPress UMKM Desa",
+        icon: "🏡",
+        tag: "WordPress CMS",
+        desc: "Website profil dan katalog produk UMKM Desa berbasis Content Management System (CMS) WordPress. Dirancang agar ramah bagi pengguna awam (admin desa/pemilik usaha) sehingga konten, foto produk, dan artikel berita dapat diedit sendiri dengan mudah tanpa perlu mengetik baris kode pemrograman.",
+        tech: ["WordPress", "Elementor Page Builder", "WooCommerce", "MySQL"],
+        features: ["Custom Admin Panel (E-learning Edit)", "Manajemen Katalog Produk Mudah", "Keamanan Tinggi (Anti-Spam & Firewall)", "Mobile Friendly & SEO Ready"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti WordPress UMKM Desa."
+      },
+      "laravel-face-detect": {
+        title: "Website Face Detect Laravel",
+        icon: "📸",
+        tag: "Laravel Web App",
+        desc: "Aplikasi absensi dan autentikasi modern berbasis framework Laravel. Sistem ini dilengkapi dengan modul kamera absensi real-time yang memanfaatkan API Deteksi Wajah (Face Detection) untuk memverifikasi wajah karyawan atau mahasiswa secara otomatis sebelum data kehadiran disimpan ke dalam database.",
+        tech: ["Laravel", "OpenCV / Face-API.js", "MySQL", "Tailwind CSS", "ChartJS"],
+        features: ["Real-time Webcam Face Detection", "Sistem Dashboard Admin Lengkap", "Ekspor Laporan PDF & Excel", "Grafik Statistik Kehadiran Bulanan"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Website Face Detect Laravel."
+      },
+      "python-tugas-sekolah": {
+        title: "Tugas Sekolah / Kuliah Python",
+        icon: "🎓",
+        tag: "Python Code",
+        desc: "Jasa asistensi dan pengerjaan tugas sekolah/kuliah bertema pemrograman Python. Meliputi tugas pemecahan masalah algoritma, struktur data (list, dictionary, tuple), OOP (Object Oriented Programming), pembuatan program kasir CLI, hingga pengerjaan projek kalkulator matematis rumit.",
+        tech: ["Python", "Algorithm Logic", "CLI Interface", "Clean Code Standards"],
+        features: ["Kode Rapi & Berkomentar Lengkap", "Analisis Kompleksitas Waktu (Big O Notation)", "Video Dokumentasi Penjelasan Program", "Bebas Plagiarisme 100%"],
+        waMsg: "Halo Project Beres, saya tertarik untuk menggunakan jasa pengerjaan Tugas Python."
+      },
+      "python-video-downloader": {
+        title: "Download Video/MP3 YT & Sosmed",
+        icon: "📥",
+        tag: "Python Program",
+        desc: "Software utilitas berbasis desktop Python yang mampu mengunduh video maupun berkas audio (.mp3) dari platform populer seperti YouTube, Instagram Reels, dan TikTok secara otomatis hanya dengan memasukkan link URL video tersebut.",
+        tech: ["Python", "PyTube / yt_dlp", "Tkinter GUI", "Threading API"],
+        features: ["Download Kualitas HD / Full HD", "Konversi Otomatis ke Format MP3", "GUI Desktop Modern & Mudah Digunakan", "Pemrosesan Cepat (Multi-threading)"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Download Video/MP3 YT & Sosmed."
+      },
+      "webp-converter": {
+        title: "Convert Gambar ke WebP",
+        icon: "🖼️",
+        tag: "Utility Tool",
+        desc: "Alat bantu utilitas batch-system Python yang dirancang untuk mengonversi ratusan gambar berformat JPG, PNG, atau BMP menjadi format modern WebP secara sekaligus (bulk conversion) guna mengurangi ukuran penyimpanan secara drastis hingga 80% tanpa merusak kualitas visual.",
+        tech: ["Python", "Pillow (PIL)", "Batch File Processing", "Tkinter GUI"],
+        features: ["Bulk Image Conversion", "Pengurangan Ukuran Berkas hingga 80%", "Antarmuka Drop-and-Click Sederhana", "Kecepatan Konversi Super Tinggi"],
+        waMsg: "Halo Project Beres, saya tertarik untuk membuat project seperti Convert Gambar ke WebP."
+      },
+      "custom-request": {
+        title: "Dan Lain-lain (Custom Request)",
+        icon: "💡",
+        tag: "Custom Request",
+        desc: "Kami menerima tantangan pembuatan sistem, program, aplikasi, maupun otomatisasi skrip kustom di luar daftar di atas. Ceritakan ide proyek impian Anda, mulai dari sistem e-commerce khusus, dashboard manajemen inventaris, sistem scraping data, bot otomatisasi chat, hingga integrasi API pihak ketiga lainnya.",
+        tech: ["NodeJS / Python / PHP", "React / Vue / Laravel", "Database SQL / NoSQL", "Custom Integrations"],
+        features: ["Konsultasi Arsitektur Sistem Gratis", "Desain Sistem UI/UX Eksklusif", "Pengembangan Agile & Transparan", "Jaminan Maintenance & Dukungan 24 Jam"],
+        waMsg: "Halo Project Beres, saya ingin berkonsultasi mengenai project kustom saya..."
+      }
+    };
+
+    // Fungsi Render Halaman
+    function renderProjectDetail() {
+      // Ambil parameter id dari URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('id') || 'landing-page-profile'; // fallback
+      
+      const data = PROJECTS_DATA[projectId] || PROJECTS_DATA['landing-page-profile'];
+      
+      // Update Tab Title
+      document.title = `${data.title} – Project Beres`;
+      
+      // Update DOM
+      document.getElementById('projectIcon').textContent = data.icon;
+      document.getElementById('projectTag').textContent = data.tag;
+      document.getElementById('projectTitle').textContent = data.title;
+      document.getElementById('projectDesc').textContent = data.desc;
+      
+      // Render Tech Stack
+      const techStackContainer = document.getElementById('projectTechStack');
+      techStackContainer.innerHTML = '';
+      data.tech.forEach(t => {
+        const chip = document.createElement('span');
+        chip.className = 'detail-tech-chip';
+        chip.textContent = t;
+        techStackContainer.appendChild(chip);
+      });
+      
+      // Render Features
+      const featuresList = document.getElementById('projectFeaturesList');
+      featuresList.innerHTML = '';
+      data.features.forEach(f => {
+        const li = document.createElement('li');
+        li.className = 'detail-features-item';
+        li.textContent = f;
+        featuresList.appendChild(li);
+      });
+      
+      // Update WhatsApp Link
+      const waNumber = "62895610842880"; // nomor WA Project Beres
+      const encodedMsg = encodeURIComponent(data.waMsg);
+      document.getElementById('projectCta').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
+      
+      // Atur visual glow border bertema biru/hijau secara bergantian
+      const wrapper = document.getElementById('projectVisualWrapper');
+      if (data.tag === 'Web Development') {
+        wrapper.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        wrapper.style.boxShadow = '0 0 32px rgba(16, 185, 129, 0.25)';
+      } else {
+        wrapper.style.borderColor = 'rgba(37, 99, 235, 0.4)';
+        wrapper.style.boxShadow = '0 0 32px rgba(37, 99, 235, 0.25)';
+      }
+    }
+
+    // Jalankan render saat load
+    window.addEventListener('DOMContentLoaded', renderProjectDetail);
+  </script>
+
+</body>
+</html>

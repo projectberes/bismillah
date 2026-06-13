@@ -1,0 +1,10 @@
+{
+  "name": "project-beres-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix web-src",
+    "build": "npm run build --prefix web-src",
+    "preview": "npm run preview --prefix web-src"
+  }
+}
